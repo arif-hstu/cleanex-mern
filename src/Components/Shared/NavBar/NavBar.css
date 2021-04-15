@@ -10,6 +10,7 @@
 }
 .NavBar .logoHolder {
 	display: grid;
+	border-right: 1px solid var(--gray);
 }
 
 .NavBar .logoHolder img {
@@ -20,7 +21,6 @@
 
 .NavBar .linkHolder {
 	padding: 0 1rem;
-	background-color: orange;
 	display: grid;
 	grid-template-rows: var(--topBarHeight) calc(var(--topBarHeight) * 2)
 }
@@ -49,17 +49,19 @@
 .NavBar .linkHolder .menuLink > *:last-child {
 	margin-left: auto;
 	margin-right: 0;
-	font-size: var(--larger);
-	color: var(--dark);
+	font-size: var(--regularFont);
+	color: gray;
 }
 
 .NavBar .contactInfo {
+	border-left: 1px solid var(--gray);
 	display: grid;
 	grid-template-rows: calc(var(--topBarHeight)) calc(var(--topBarHeight) * 2); 
 }
 
 .NavBar .contactInfo .info {
 	display: flex;
+	align-items: center;
 }
 
 .NavBar .contactInfo .info > *:last-child {
@@ -71,12 +73,14 @@
 .NavBar .contactInfo .contact {
 	display: grid;
 	grid-template-columns: 0.2fr 1fr;
+	background-color: var(--primary);
 }
 
 .NavBar .contactInfo .contact > *:first-child {
 	font-size: 0.9rem;
 	justify-self: center;
 	align-self: center;
+	color: var(--white);
 }
 
 .NavBar .contactInfo .contact .contactDetails {
@@ -88,5 +92,10 @@
 
 .NavBar .contactInfo .contact .contactDetails > * {
 	margin: 0;
+	color: var(--white);
+}
 
+.NavBar .contactInfo .contact .contactDetails > p {
+	font-weight: bold;
+	margin-top: 3px;
 }
