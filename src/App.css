@@ -1,12 +1,30 @@
 :root {
-  --primary: #1e3bb1;
-  --secondary: #4edffe;
-  --white: #fff;
-  --gray: #e1e7f4;
-  --centralWidth: 70%;
-  --margin: 15%;
+	--dark: #112063;
+	--primary: #1e3bb1;
+	--secondary: #4edffe;
+	--white: #fff;
+	--gray: #e1e7f4;
+	--centralWidth: 70%;
+	--margin: 15%;
+	--smallFont: 10px;
+	--regularFont: 0.9rem;
+	--largeFont: 1.2rem;
+	--largerFont: 1.8rem;
+	--thin: 250;
+	--bold: 500;
+	--bolder: 700;
+	--topBarHeight: 1.2rem;
 }
 
 body {
+  font-family: 'Open Sans', Helvetica, sans-serif;
   background-color: tomato;
+}
+
+p {
+	font-size: var(--smallFont);
+}
+
+small {
+	font-size: 9px;
 }

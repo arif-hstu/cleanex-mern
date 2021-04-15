@@ -1,5 +1,37 @@
 .TopBar {
-	background-color: white;
 	width: var(--centralWidth);
 	margin: auto;
+	font-size: var(--smallFont);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: var(--topBarHeight);
+}
+
+.TopBar .brandIcons > *{
+	margin-right: 0.5rem;
+	color: var(--secondary)
+}
+
+.TopBar .topBarContact {
+	display: flex;
+	justify-content: space-between;
+}
+
+.TopBar .topBarContact .contact > *,
+.TopBar .topBarContact > * {
+	text-decoration: none;
+	color: var(--dark);
+} 
+
+
+.TopBar .topBarContact > *{
+	margin-left: 0.5rem;
+}
+
+.TopBar .topBarContact .contact > *{
+	margin-left: 0.4rem;	
+}
+.TopBar .topBarContact .contact > *:first-child{
+	color: var(--secondary);
 }

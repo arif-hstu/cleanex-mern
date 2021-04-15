@@ -1,0 +1,92 @@
+.NavBar {
+	background-color: white;
+	width: var(--centralWidth);
+	margin: auto;
+	height: calc(var(--topBarHeight) * 3);
+
+	display: grid;
+	grid-template-columns: 6rem 1fr 8rem;
+
+}
+.NavBar .logoHolder {
+	display: grid;
+}
+
+.NavBar .logoHolder img {
+	height: calc(var(--topBarHeight) * 2);
+	align-self: center;
+	justify-self: center;
+}
+
+.NavBar .linkHolder {
+	padding: 0 1rem;
+	background-color: orange;
+	display: grid;
+	grid-template-rows: var(--topBarHeight) calc(var(--topBarHeight) * 2)
+}
+
+.NavBar .linkHolder .catagoryLink > * {
+	text-decoration: none;
+	font-size: var(--smallFont);
+	margin-right: 0.5rem;
+}
+
+.NavBar .linkHolder .menuLink {
+	display: flex;
+	justify-content: left;
+	align-items: center;
+}
+
+.NavBar .linkHolder .menuLink > * {
+	text-decoration: none;
+	font-size: var(--smallFont);
+	margin-right: 0.5rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.NavBar .linkHolder .menuLink > *:last-child {
+	margin-left: auto;
+	margin-right: 0;
+	font-size: var(--larger);
+	color: var(--dark);
+}
+
+.NavBar .contactInfo {
+	display: grid;
+	grid-template-rows: calc(var(--topBarHeight)) calc(var(--topBarHeight) * 2); 
+}
+
+.NavBar .contactInfo .info {
+	display: flex;
+}
+
+.NavBar .contactInfo .info > *:last-child {
+	font-size: var(--smallFont);
+	margin-left: auto;
+	margin-right: 0.5rem;
+}
+
+.NavBar .contactInfo .contact {
+	display: grid;
+	grid-template-columns: 0.2fr 1fr;
+}
+
+.NavBar .contactInfo .contact > *:first-child {
+	font-size: 0.9rem;
+	justify-self: center;
+	align-self: center;
+}
+
+.NavBar .contactInfo .contact .contactDetails {
+	display: flex;
+	justify-content: center;
+	align-items: start;
+	flex-direction: column;
+}
+
+.NavBar .contactInfo .contact .contactDetails > * {
+	margin: 0;
+
+}
