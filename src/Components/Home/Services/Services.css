@@ -1,6 +1,7 @@
 .Services {
 	margin-left: var(--margin);
 	margin-right: calc(var(--margin) - 2rem);
+	margin: 10%;
 
 	display: grid;
 	grid-template-columns: 0.8fr 1fr 0.8fr;

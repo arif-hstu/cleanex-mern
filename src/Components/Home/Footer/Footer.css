@@ -1,12 +1,27 @@
 
 .Footer {
+	position: relative;
+	margin-top: 8rem;
+	margin-right: var(--margin);
+	margin-left: var(--margin);
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	grid-gap: 1rem;
 }
 
-.Footer, .Footer p {
+.Footer:before {
+	content: '';
+	position: absolute;
+	top: -5rem;
+	left: -30%;
+	right: -30%;
+	bottom: -25%;
+	z-index: -1;
+
 	background-color: var(--dark);
+}
+
+.Footer, .Footer p {
 	color: white;
 }
 
@@ -22,6 +37,19 @@
 
 .Footer .social .contact {
 	display: grid;
-	grid-template-columns: repeat(3 1fr);
-	grid-template-rows: repeat(2 1fr);
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(2, 1fr);
+	grid-gap: 0.2rem;
+}
+
+.Footer .social .contact img {
+	width: 100%;
+}
+
+.copyrightBar p {
+	color: white;
+	background-color: #051135;
+	padding: 1.5rem 0rem;
+	text-align: center;
+	margin-top: 2rem;
 }

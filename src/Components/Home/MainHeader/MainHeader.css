@@ -1,5 +1,5 @@
 .MainHeader {
-	height: 25rem;
+	height: 23rem;
 }
 
 .MainHeader::before {
@@ -8,7 +8,7 @@
   top: 0; 
   left: 0;
   width: 100%;
-  height: 80%;
+  height: 23rem;
   opacity: 0.2; 
   z-index: -1;
   background: url('../../../images/mainHeaderBg1.jpg');
