@@ -1,3 +1,27 @@
+
 .Footer {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-gap: 1rem;
+}
+
+.Footer, .Footer p {
 	background-color: var(--dark);
+	color: white;
+}
+
+.Footer .officialInfo .contact > *{
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.Footer .officialInfo .contact > * > * {
+	margin-right: 0.5rem;
+}
+
+.Footer .social .contact {
+	display: grid;
+	grid-template-columns: repeat(3 1fr);
+	grid-template-rows: repeat(2 1fr);
 }

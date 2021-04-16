@@ -5,6 +5,7 @@ import Services from '../Services/Services';
 import ExpertTeam from '../ExpertTeam/ExpertTeam';
 import Partners from '../Partners/Partners';
 import Review from '../Review/Review';
+import Footer from '../Footer/Footer';
 
 function Home() {
 	return (
@@ -14,6 +15,7 @@ function Home() {
 			<ExpertTeam />
 			<Partners />
 			<Review />
+			<Footer />
 		</div>
 	)
 }
