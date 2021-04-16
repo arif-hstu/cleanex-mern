@@ -1,6 +1,19 @@
 .Review {
 	margin-left: var(--margin);
 	margin-right: var(--margin);
+	position: relative;
+	width: var(--centralWidth);
+}
+
+.Review:before {
+	content: '';
+	position: absolute;
+	top: -25%;
+	left: -25%;
+	bottom: -25%;
+	right: -28%;
+	z-index: -1;
+	background-color: #e3e8ed;
 }
 
 .Review h2 {
@@ -30,4 +43,18 @@
 
 .Review .header .headline > * {
 	margin: 0;
+}
+
+.Review .cardHolder {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-gap: 1rem;
+}
+
+.Review .cardHolder > *:last-child {
+	margin-left: auto;
+}
+
+.Review .cardHolder > *:nth-child(2) {
+	margin: auto;
 }

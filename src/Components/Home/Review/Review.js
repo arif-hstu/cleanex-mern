@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ReviewCard from '../../ReviewCard/ReviewCard';
+import ReviewCard from '../ReviewCard/ReviewCard';
 
 import './Review.css';
 
