@@ -1,0 +1,51 @@
+.ExpertTeam {
+	margin-left: var(--margin);
+	margin-right: var(--margin);
+	margin-top: var(--margin);
+}
+
+.ExpertTeam h2 {
+	font-weight: var(--bolder);
+	font-size: var(--largeFont);
+}
+
+.ExpertTeam h3 {
+	font-weight: var(--regular);
+	font-size: var(--regularFont);
+}
+
+.ExpertTeam .header {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.ExpertTeam .header .headline{
+	margin-left: 5%;
+	margin-right: 5%;
+	color: var(--primary);
+}
+
+.ExpertTeam .header .headline > * {
+	margin: 0;
+}
+
+.ExpertTeam .contents {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-gap: 0.8rem;
+}
+
+.ExpertTeam .contents > *:nth-child(2),
+.ExpertTeam .contents > *:nth-child(3){
+	margin: auto;
+}
+
+.ExpertTeam .contents > *:last-child {
+	margin-left: auto;
+}
+
+.ExpertTeam .contents > *:first-child {
+	margin-right: auto;
+}
+

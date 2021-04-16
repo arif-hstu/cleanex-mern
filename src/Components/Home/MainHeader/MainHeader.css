@@ -1,0 +1,38 @@
+.MainHeader {
+	height: 25rem;
+}
+
+.MainHeader::before {
+  content: "";
+  position: absolute;
+  top: 0; 
+  left: 0;
+  width: 100%;
+  height: 80%;
+  opacity: 0.2; 
+  z-index: -1;
+  background: url('../../../images/mainHeaderBg1.jpg');
+}
+
+.MainHeader .headerContent {
+	margin-top: 3.5rem;
+	width: var(--centralWidth);
+	margin-left: var(--margin);
+	margin-right: var(--margin);
+	text-align: center;
+}
+
+.MainHeader .headerContent h1 {
+	color: var(--dark);
+}
+
+.MainHeader .headerContent .primaryBtn {
+	margin-right: 0.25rem;
+}
+
+.MainHeader .headerContent .secondaryBtn {
+	margin-left: 0.25rem;
+}
+
+
+

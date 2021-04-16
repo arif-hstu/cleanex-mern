@@ -1,0 +1,85 @@
+.Services {
+	margin-left: var(--margin);
+	margin-right: calc(var(--margin) - 2rem);
+
+	display: grid;
+	grid-template-columns: 0.8fr 1fr 0.8fr;
+	grid-gap: 0.8rem;
+}
+
+.Services .serviceImg img{
+	width: 100%;
+	border-radius: 1.5rem;
+}
+
+
+.Services .serviceFeature{
+	position: absolute;
+	top: 5rem;
+	left: -5px;
+
+	text-align: center;
+	background-color: var(--primary);
+	color: var(--white);
+	padding: 0.3rem;
+	border-radius: 0.8rem;
+}
+
+.Services .serviceFeature {
+	font-size: 9px;
+	margin: 0;
+}
+
+.Services .serviceFeature p{
+	font-size: var(--largeFont);
+	font-weight: var(--bolder);
+	margin: 0;
+	color: var(--whtie);
+}
+
+.Services .serviceImg {
+	z-index: -20;
+}
+
+
+.Services .serviceFeature::after{
+	content: '';
+	position: absolute;
+	bottom: -4px;
+	left: -4px;
+	width: 80%;
+	height: 80%;
+	z-index: -1;
+
+	background-color: var(--secondary);
+	color: var(--white);
+	padding: 0.3rem;
+	border-radius: 0.8rem;
+}
+
+.Services .serviceImg {
+	margin-right: 2rem;
+	position: absolute;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.Services .serviceImg .secondaryBtn{
+	margin-top: 10px;
+}
+
+.Services .serviceCenter {
+	display: grid;
+	justify-content: center;
+	align-items: center;
+
+	position: relative;
+}
+
+.Services .serviceList1, .Services .serviceList2 {
+	display: grid;
+	grid-template-rows: 1fr 1fr 1fr;
+	grid-gap: 0.5rem;
+} 

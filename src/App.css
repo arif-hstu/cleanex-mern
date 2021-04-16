@@ -4,12 +4,13 @@
 	--secondary: #4edffe;
 	--white: #fff;
 	--gray: #e1e7f4;
+	--darkGray: #505050;
 	--centralWidth: 70%;
 	--margin: 15%;
-	--smallFont: 10px;
-	--regularFont: 0.9rem;
-	--largeFont: 1.2rem;
-	--largerFont: 1.8rem;
+	--smallFont: 12px;
+	--regularFont: 1rem;
+	--largeFont: 1.3rem;
+	--largerFont: 1.9rem;
 	--thin: 250;
 	--bold: 500;
 	--bolder: 700;
@@ -18,13 +19,38 @@
 
 body {
   font-family: 'Open Sans', Helvetica, sans-serif;
-  background-color: tomato;
 }
 
 p {
 	font-size: var(--smallFont);
+	color: var(--darkGray);
 }
 
 small {
 	font-size: 9px;
 }
+
+.primaryBtn {
+	width: 6.8rem;
+	background-color: var(--primary);
+	padding: 0.5rem;
+	border-style: none;
+	color: var(--white);
+	border-radius: 2px;
+	font-size: var(--smallFont);
+	cursor: pointer;
+	outline: none;
+}
+
+.secondaryBtn {
+	width: 6.8rem;
+	background-color: var(--secondary);
+	padding: 0.5rem;
+	border-style: none;
+	color: var(--dark);
+	border-radius: 2px;
+	font-size: var(--smallFont);
+	cursor: pointer;
+	outline: none;
+}
+

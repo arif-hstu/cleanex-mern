@@ -1,0 +1,30 @@
+.Expert {
+	background-color: tomato;
+	width: 12rem;
+	height: 14rem;
+}
+
+.Expert .dummyContent {
+	height: 10rem;
+}
+
+.Expert .content {
+	position: relative;
+
+	height: 4rem;
+	background-color: orange;
+	clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 45%); 
+}
+
+.Expert .content::before {
+	content: '';
+	position: absolute;
+	top: -5%;
+	left: 0;
+	height: 4rem;
+	width: 100%;
+	z-index: -1;
+
+	background-color: red;
+	clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 45%); 
+}

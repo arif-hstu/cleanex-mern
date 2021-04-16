@@ -1,0 +1,67 @@
+.Service {
+	display: grid;
+	grid-template-columns: 0.2fr 1fr;
+
+	box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+	border-radius: 5px;
+	background-color: var(--white);
+}
+
+.Service .textHolder {
+	padding: 1rem;
+}
+
+.Service .textHolder p {
+	font-weight: var(--bolder);
+	color: var(--dark);
+	margin-bottom: 0;
+}
+
+.Service .textHolder p:last-child {
+	color: var(--darkGray);
+	font-size: var(--smallFont);
+	font-weight: var(--light);
+}
+
+.Service .iconHolder img {
+	width: 1.5rem;
+}
+
+.Service .iconHolder {
+	position: relative;
+	display: grid;
+	justify-content: center;
+	align-items: center;
+}
+
+
+.Service .iconHolder .icon {
+	justify-self: center;
+	align-self: center;
+	height: 1.5rem;
+	width: 1.5rem;
+	background-color: var(--secondary);
+	padding: 1rem;
+	border-radius: 50%;
+
+
+	position: absolute;
+	left: -2rem;
+	z-index: 10;
+}
+
+.Service .iconHolder .icon::before {
+	content: '';
+   display: inline-block;
+   left: -3px;
+   top: 3px;
+   width: 3.5rem;
+   height: 3.5rem;
+   -moz-border-radius: 4rem;
+   -webkit-border-radius: 4rem;
+   border-radius: 50%;
+   background-color: var(--primary);
+   position: absolute;
+   z-index: -20;
+}
+

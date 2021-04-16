@@ -1,13 +1,15 @@
 import React from 'react';
 
-import TopBar from '../../Shared/TopBar/TopBar';
-import NavBar from '../../Shared/NavBar/NavBar';
+import MainHeader from '../MainHeader/MainHeader';
+import Services from '../Services/Services';
+import ExpertTeam from '../ExpertTeam/ExpertTeam';
 
 function Home() {
 	return (
 		<div>
-			<TopBar />
-			<NavBar />
+			<MainHeader /> 
+			<Services /> 
+			<ExpertTeam />
 		</div>
 	)
 }
