@@ -8,7 +8,7 @@ function ExpertTeam() {
 		<div className='ExpertTeam'>
 			<div className="header">
 				<div className="headline">
-					<h2>We have an Expert Team</h2>
+					<h2>We have an expert team</h2>
 					<h3>to serve you.</h3>
 				</div>
 				<div className="text">

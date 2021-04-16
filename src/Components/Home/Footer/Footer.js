@@ -31,7 +31,7 @@ function Footer() {
 				</div>
 
 				<div className="newsletter">
-					<h4>We are <span className='highlight'>Cleanex!</span></h4>
+					<h4>Newsletter</h4>
 					<p>We work with a passion of taking challenges and creating new ones in advertising sector.</p>
 					<div className="socialIcons">
 						<FontAwesomeIcon icon={faFacebookF} />
@@ -42,7 +42,7 @@ function Footer() {
 				</div>
 
 				<div className="officialInfo">
-					<h4>We are <span className='highlight'>Cleanex!</span></h4>
+					<h4>Official Info:</h4>
 					<div className="contact">
 						<div>
 							<FontAwesomeIcon icon={faMapMarker} /> <p>Suihari, Dinajpur Sadar, Dinajpur,Dinajpur</p><br />

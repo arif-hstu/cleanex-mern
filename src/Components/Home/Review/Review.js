@@ -9,8 +9,8 @@ function Review() {
 		<div className='Review'>
 			<div className="header">
 				<div className="headline">
-					<h2>We have an Expert Team</h2>
-					<h3>to serve you.</h3>
+					<h2>We are very happy for</h2>
+					<h3>clients reviews.</h3>
 				</div>
 				<div className="text">
 					<p>Lorem ipsum, dolor sit amet consectetur, adipisicing elit. Aliquid, id!</p>

@@ -8,14 +8,23 @@ import {
 
 import './App.css';
 import Home from './Components/Home/Home/Home';
+import Dashboard from './Components/Dashboard/Dashboard/Dashboard';
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <Home />
-      </div>
-    </Router>
+    <div className="App">
+      <Router>
+        <Switch>
+          <Route exact path='/'>
+            <Home />
+          </Route>
+          <Route exact path='/dashboard/:destination'>
+            <Dashboard />
+          </Route>
+        </Switch>
+      </Router>
+    </div>
+
   );
 }
 

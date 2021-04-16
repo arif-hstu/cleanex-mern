@@ -37,7 +37,9 @@ function NavBar() {
 
 			<div className="contactInfo">
 				<div className="info">
-					<FontAwesomeIcon icon={faUser} />
+					<Link to='/dashboard/orderList'>
+						<FontAwesomeIcon icon={faUser} />
+					</Link>
 				</div>
 				<div className="contact">
 					<FontAwesomeIcon icon={faPhone} />

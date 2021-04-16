@@ -1,0 +1,12 @@
+.DashboardHeader {
+	background-color: #19103f;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-left: 2rem;
+	color: white;
+}
+
+.DashboardHeader > * {
+		margin-right: 3vw;
+}
