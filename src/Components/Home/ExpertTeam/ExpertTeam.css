@@ -19,9 +19,11 @@
 .ExpertTeam h2 {
 	font-weight: var(--bolder);
 	font-size: var(--largeFont);
+	color: var(--dark);
 }
 
 .ExpertTeam h3 {
+	color: var(--dark);
 	font-weight: var(--regular);
 	font-size: var(--regularFont);
 }

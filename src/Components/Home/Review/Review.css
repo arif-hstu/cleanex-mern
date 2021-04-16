@@ -1,0 +1,33 @@
+.Review {
+	margin-left: var(--margin);
+	margin-right: var(--margin);
+}
+
+.Review h2 {
+	font-weight: var(--bolder);
+	font-size: var(--largeFont);
+	color: var(--dark);
+}
+
+.Review h3 {
+	color: var(--dark);
+	font-weight: var(--regular);
+	font-size: var(--regularFont);
+}
+
+.Review .header {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 1rem;
+}
+
+.Review .header .headline{
+	margin-left: 5%;
+	margin-right: 5%;
+	color: var(--primary);
+}
+
+.Review .header .headline > * {
+	margin: 0;
+}
