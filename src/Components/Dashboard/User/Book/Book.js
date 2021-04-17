@@ -1,105 +1,51 @@
 import React, { useState } from 'react';
 import './Book.css';
 import axios from 'axios';
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
+
+import CheckoutForm from '../CheckoutForm/CheckoutForm';
+import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 require('dotenv').config();
 
 
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_KEY);
+
 function Book() {
-	// handle INPUT PRODUCT to send to the database
-	const [inputService, setInputService] = useState({});
+	const [inputInfo, setInputInfo] = useState({});
 	const [error, setError] = useState({});
-	const [spinner, setSpinner] = useState(false);
 	const [uploadMessage, setUploadMessage] = useState('');
 
-	// handle upload image to the imgbb api
-	// const [imageUrl, setImageUrl] = useState('');
-	const uploadImage = (img) => {
-		let body = new FormData();
-		body.set('key', process.env.REACT_APP_IMGBB_KEY)
-		body.append('image', img)
-
-		return axios({
-			method: 'post',
-			url: 'https://api.imgbb.com/1/upload',
-			data: body
-		})
-			.catch(err => {
-				setError({
-					error: 'serviceIcon'
-				})
-			})
-	};
-	const handleImage = (e) => {
-		uploadImage(e.target.files[0])
-			.then(res => {
-				if (res !== undefined) {
-					const newService = { ...inputService };
-					newService.serviceIcon = res.data.data.url;
-					setInputService(newService);
-					setSpinner(false);
-
-				} else {
-					const newService = { ...inputService };
-					delete newService.serviceIcon;
-					setInputService(newService);
-				}
-			})
-	}
-
-	// process input data
+	// process input text
 	const handleInputText = (e) => {
 		setUploadMessage('');
-		setSpinner(false);
-
 		let valid = false;
-		// if input is product name
-		if (e.target.name === 'serviceName' || e.target.name === 'serviceDetails') {
-			const stringRegex = /[a-zA-Z]/;
-			valid = stringRegex.test(e.target.value)
 
-			if (valid) {
-				const newService = { ...inputService };
-				newService[e.target.name] = e.target.value;
-				setInputService(newService);
-				valid = false;
+		const stringRegex = /[a-zA-Z]/;
+		valid = stringRegex.test(e.target.value);
+		console.log(valid);
 
-			} else {
-				const newService = { ...inputService };
-				delete newService[e.target.name];
-				setInputService(newService);
+		if (valid) {
+			const newReview = { ...inputInfo };
+			newReview[e.target.name] = e.target.value;
+			setInputInfo(newReview);
+			valid = false;
 
-				setError({
-					error: e.target.name
-				});
-			}
+		} else {
+			const newReview = { ...inputInfo };
+			delete newReview[e.target.name];
+			setInputInfo(newReview);
+
+			setError({
+				error: e.target.name
+			});
 		}
 
-		// if input is price
-		if (e.target.name === 'serviceCharge') {
-			const numberRegex = /^[0-9]+$/;
-			valid = numberRegex.test(e.target.value);
-
-			if (valid) {
-				const newService = { ...inputService };
-				newService[e.target.name] = e.target.value;
-				setInputService(newService);
-				valid = false;
-			} else {
-				const newService = { ...inputService };
-				delete newService[e.target.name];
-				setInputService(newService);
-
-				setError({
-					error: e.target.name
-				});
-			}
-		}
 	}
 
 	// remove error message
 	const removeError = () => {
 		setUploadMessage('');
-		setSpinner(false);
 		setError({});
 	}
 
@@ -107,7 +53,6 @@ function Book() {
 	const loadSpinner = () => {
 		setUploadMessage('');
 		removeError();
-		setSpinner(true);
 	}
 
 
@@ -115,22 +60,34 @@ function Book() {
 	* send processed data
 	* to the server
 	*******/
-	const sendProductToDatabase = (e) => {
-		// e.preventDefault();
-		if (inputService.serviceName && inputService.serviceCharge && inputService.serviceDetails && inputService.serviceIcon) {
+	const sendToDatabase = (e) => {
+		
+		// create random orderID
+		const randomIdGenerator = () => {
+			return Math.random().toString(36).substr(2, 7);
+		};
+		const newInputInfo = { ...inputInfo };
+		newInputInfo.orderID = randomIdGenerator();
+		setInputInfo(newInputInfo);
 
+		if (
+			inputInfo.buyerName &&
+			inputInfo.buyerEmail &&
+			inputInfo.serviceName &&
+			inputInfo.orderID
+		) {
 			// send product to the database
-			fetch('https://cleanex.herokuapp.com/addService', {
+			fetch('http://localhost:5000/book', {
 				method: 'POST',
 				headers: {
 					'Content-type': 'application/json'
 				},
-				body: JSON.stringify(inputService)
+				body: JSON.stringify(inputInfo)
 			})
 				.then(res => res.json())
 				.then(data => {
 					if (data.insertedCount) {
-						setUploadMessage('Uploaded Successfully!')
+						setUploadMessage('Service booked successfully!')
 					} else {
 						setUploadMessage('Oops.. There was an error, please try again.')
 					}
@@ -145,31 +102,39 @@ function Book() {
 	return (
 		<div className='Book'>
 			<div className="part1">
-				<h5>Service Name</h5>
-				<input onFocus={removeError} onBlur={handleInputText} id='Product' type="text" name="serviceName" />
+				<h5>Your Name</h5>
+				<input onFocus={removeError} onBlur={handleInputText} type="text" name="buyerName" />
 				{
-					error.error === 'serviceName' && <p style={{ color: '#fa4e92' }}>Please input a valid Service Name</p>
-				}
-				<h5>Service Charge</h5>
-				<input onFocus={removeError} onBlur={handleInputText} type="text" name='serviceCharge' />
-				{
-					error.error === 'serviceCharge' && <p style={{ color: '#fa4e92' }}>Please input a valid Price</p>
+					error.error === 'buyerName' && <p style={{ color: '#fa4e92' }}>Please input a valid Name</p>
 				}
 			</div>
 			<div className="part2">
-				<h5>Details</h5>
-				<input onFocus={removeError} onBlur={handleInputText} id='Category' type="textarea" name='serviceDetails' />
+				<h5>Email</h5>
+				<input onFocus={removeError} onBlur={handleInputText} type="text" name="buyerEmail" />
 				{
-					error.error === 'serviceDetails' && <p style={{ color: '#fa4e92' }}>Please input valid Details</p>
+					error.error === 'buyerEmail' && <p style={{ color: '#fa4e92' }}>Please input valid email</p>
 				}
+			</div>
+			<div className="part3">
+				<h5>Details</h5>
+				<input onFocus={removeError} onBlur={handleInputText} type="text" name="serviceName" />
+				{
+					error.error === 'serviceName' && <p style={{ color: '#fa4e92' }}>Please input valid details</p>
+				}
+			</div>
 
-				<h5>Image</h5>
-				<div className="imageUpload">
-					<input type="file" onClick={loadSpinner} onChange={handleImage} />
-					{
-						error.error === 'serviceIcon' && <p style={{ color: '#fa4e92' }}>There was an error! Please retry.</p>
-					}
-				</div>
+			<div className="stripe">
+				<Elements stripe={stripePromise}>
+					<CheckoutForm
+						uploadMessage={uploadMessage}
+						setUploadMessage={setUploadMessage}
+						setError={setError}
+						error={error}
+						uploadMessage={uploadMessage}
+						inputInfo={inputInfo}
+						sendToDatabase={sendToDatabase}
+					/>
+				</Elements>
 			</div>
 			<div className="generalError">
 				{
@@ -177,17 +142,8 @@ function Book() {
 					<p style={{
 						color: '#fa4e92'
 					}}>There was an error! Please try again.
-					</p>
+          		</p>
 				}
-
-				{
-					spinner &&
-					<p style={{
-						color: 'green'
-					}}>Uploading Image...
-					</p>
-				}
-
 				{
 					uploadMessage &&
 					<p style={{
@@ -196,7 +152,7 @@ function Book() {
 					</p>
 				}
 			</div>
-			<button onClick={sendProductToDatabase}>Submit</button>
+
 		</div>
 	)
 }

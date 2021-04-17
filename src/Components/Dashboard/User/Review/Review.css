@@ -7,26 +7,45 @@
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
 	grid-gap: 5%;
 	grid-template-areas: 
-	'part1 part1 part1 part1 part1 part1'
+	'part1 part1 part1 part2 part2 part2'
+	'part3 part3 part3 part3 part3 part3'
 	'error error error error error error'
 	'. . button button . .';
 
 	margin-right: 2vw;
 }
 
+.Review h5 {
+	margin-bottom: 5px;
+}
 
-.Review .part1 input {
+.Review .part1 input, 
+.Review .part2 input, 
+.Review .part3 input {
 	border: 1px solid #dedede;
 	height: 1.8rem;
 	border-radius: 0.4rem;
 }
 
 
-.Review .part1 {
+.Review .part1,
+.Review .part2,
+.Review .part3  {
 	height: auto;
-	grid-area: part1;
 	display: flex;
 	flex-direction: column;
+}
+
+.Review .part1 {
+	grid-area: part1;
+}
+
+.Review .part2 {
+	grid-area: part2;
+}
+
+.Review .part3 {
+	grid-area: part3;
 }
 
 .Review .generalError {
@@ -55,6 +74,8 @@
 		grid-gap: 5%;
 		grid-template-areas: 
 		'part1 part1 part1' 
+		'part2 part2 part2' 
+		'part3 part3 part3' 
 		'error error error'
 		'. button .';
 	}

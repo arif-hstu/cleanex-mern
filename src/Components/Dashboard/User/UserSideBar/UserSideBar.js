@@ -7,39 +7,35 @@ function UserSideBar() {
 	// useparams to change the menu style
 	const { destination } = useParams();
 
-	const [addStyle, setAddStyle] = useState({});
-	const [listStyle, setListStyle] = useState({});
-	const [adminStyle, setAdminStyle] = useState({});
-	const [manageStyle, setManageStyle] = useState({});
+	const [bookingStyle, setBookingStyle] = useState({});
+	const [reviewStyle, setReviewStyle] = useState({});
+	const [bookStyle, setBookStyle] = useState({});
 
 	useEffect(() => {
-		if (destination === 'bookingList') {
-			setListStyle({
-				backgroundColor: '#2f216a',
-				padding: '0.8rem 0 0.8rem 1rem'
-			});
-			setAddStyle({});
-			setAdminStyle({});
-			setManageStyle({});
-		}
 		if (destination === 'review') {
-			setAddStyle({
+			setReviewStyle({
 				backgroundColor: '#2f216a',
 				padding: '0.8rem 0 0.8rem 1rem'
 			});
-			setListStyle({});
-			setAdminStyle({});
-			setManageStyle({});
+			setBookingStyle({});
+			setBookStyle({});
 		}
 		if (destination === 'book') {
-			setManageStyle({
+			setBookStyle({
 				backgroundColor: '#2f216a',
 				padding: '0.8rem 0 0.8rem 1rem'
 			});
-			setListStyle({});
-			setAdminStyle({});
-			setAddStyle({});
-		} 
+			setReviewStyle({});
+			setBookingStyle({});
+		}
+		if (destination === 'bookingList') {
+			setBookingStyle({
+				backgroundColor: '#2f216a',
+				padding: '0.8rem 0 0.8rem 1rem'
+			});
+			setReviewStyle({});
+			setBookStyle({});
+		}
 	}, [destination]);
 
 
@@ -47,18 +43,18 @@ function UserSideBar() {
 		<div className='UserSideBar'>
 			<Link to='/'><img src={logo} alt="" /></Link>
 			<div className="menu">
-				<Link style={ listStyle } to='/dashboard/bookingList' >
-					Order List
+				<Link style={bookStyle} to='/dashboard/book' >
+					Book
 				</Link>
-				<Link style={ addStyle } to='/dashboard/review'>
-					Add Service
+				<Link style={bookingStyle} to='/dashboard/bookingList' >
+					Booking List
 				</Link>
-				<Link style={ adminStyle } to='/dashboard/book' >
-					Make Admin
+				<Link style={reviewStyle} to='/dashboard/review'>
+					Review
 				</Link>
 			</div>
 		</div>
 	)
 }
 
-export default UserSideBar; 
+export default UserSideBar;

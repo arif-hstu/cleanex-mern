@@ -3,7 +3,7 @@ import './Review.css';
 import axios from 'axios';
 
 function Review() {
-	const [inputEmail, setInputEmail] = useState({});
+	const [inputReview, setInputReview] = useState({});
 	const [error, setError] = useState({});
 	const [uploadMessage, setUploadMessage] = useState('');
 
@@ -12,19 +12,20 @@ function Review() {
 		setUploadMessage('');
 		let valid = false;
 
-		const stringRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-		valid = stringRegex.test(e.target.value)
+		const stringRegex = /[a-zA-Z]/;
+		valid = stringRegex.test(e.target.value);
+		console.log(valid);
 
 		if (valid) {
-			const newEmail = { ...inputEmail };
-			newEmail[e.target.name] = e.target.value;
-			setInputEmail(newEmail);
+			const newReview = { ...inputReview };
+			newReview[e.target.name] = e.target.value;
+			setInputReview(newReview);
 			valid = false;
 
 		} else {
-			const newEmail = { ...inputEmail };
-			delete newEmail[e.target.name];
-			setInputEmail(newEmail);
+			const newReview = { ...inputReview };
+			delete newReview[e.target.name];
+			setInputReview(newReview);
 
 			setError({
 				error: e.target.name
@@ -52,15 +53,18 @@ function Review() {
 	*******/
 	const sendToDatabase = (e) => {
 		// e.preventDefault();
-		if (inputEmail.email) {
-
+		if (
+			inputReview.reviewerName && 
+			inputReview.designation && 
+			inputReview.review 
+			) {
 			// send product to the database
-			fetch('http://localhost:5000/makeAdmin', {
+			fetch('http://localhost:5000/addReview', {
 				method: 'POST',
 				headers: {
 					'Content-type': 'application/json'
 				},
-				body: JSON.stringify(inputEmail)
+				body: JSON.stringify(inputReview)
 			})
 				.then(res => res.json())
 				.then(data => {
@@ -80,10 +84,24 @@ function Review() {
 	return (
 		<div className='Review'>
 			<div className="part1">
-				<h5>Email Address</h5>
-				<input onFocus={removeError} onBlur={handleInputText} id='Product' type="text" name="email" />
+				<h5>Your Name</h5>
+				<input onFocus={removeError} onBlur={handleInputText}  type="text" name="reviewerName" />
 				{
-					error.error === 'email' && <p style={{ color: '#fa4e92' }}>Please input a valid Email Address</p>
+					error.error === 'reviewerName' && <p style={{ color: '#fa4e92' }}>Please input a valid Name</p>
+				}
+			</div>
+			<div className="part2">
+				<h5>Company Name, Designation</h5>
+				<input onFocus={removeError} onBlur={handleInputText}  type="text" name="designation" />
+				{
+					error.error === 'designation' && <p style={{ color: '#fa4e92' }}>Please input valid info</p>
+				}
+			</div>
+			<div className="part3">
+				<h5>Details</h5>
+				<input onFocus={removeError} onBlur={handleInputText}  type="textarea" name="review" />
+				{
+					error.error === 'review' && <p style={{ color: '#fa4e92' }}>Please input valid details</p>
 				}
 			</div>
 			<div className="generalError">
@@ -103,7 +121,7 @@ function Review() {
 					</p>
 				}
 			</div>
-			<button className='primaryBtn' onClick={sendToDatabase}>Make Admin</button>
+			<button className='primaryBtn' onClick={sendToDatabase}>Submit</button>
 		</div>
 	)
 }
