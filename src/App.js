@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, createContext } from 'react';
+import { useState, useEffect, createContext } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -14,27 +14,38 @@ import Login from './Components/Login/Login';
 import Dashboard from './Components/Dashboard/Dashboard/Dashboard';
 
 export const UserContext = createContext();
+export const AdminContext = createContext();
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({});
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [admins, setAdmins] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:5000/admins')
+      .then(res => res.json())
+      .then(data => setAdmins(data))
+  }, [])
 
   return (
     <div className="App">
-    <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
-      <Router>
-        <Switch>
-          <Route exact path='/'>
-            <Home />
-          </Route>
-          <PrivateRoute exact path='/dashboard/:destination'>
-            <Dashboard />
-          </PrivateRoute>
-          <Route exact path='/login'>
-            <Login />
-          </Route>
-        </Switch>
-      </Router>
-    </UserContext.Provider>
+      <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
+        <AdminContext.Provider value={[isAdmin, setIsAdmin, admins, setAdmins]}>
+          <Router>
+            <Switch>
+              <Route exact path='/'>
+                <Home />
+              </Route>
+              <PrivateRoute exact path='/dashboard/:destination'>
+                <Dashboard />
+              </PrivateRoute>
+              <Route exact path='/login'>
+                <Login />
+              </Route>
+            </Switch>
+          </Router>
+        </AdminContext.Provider>
+      </UserContext.Provider>
     </div>
   );
 }

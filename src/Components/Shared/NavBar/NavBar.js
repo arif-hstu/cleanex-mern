@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -9,7 +9,11 @@ import { faUser } from '@fortawesome/free-regular-svg-icons';
 import './NavBar.css';
 import logo from '../../../images/logoText.png';
 
+import { AdminContext } from '../../../App';
+
 function NavBar() {
+	const [isAdmin, setAdmin] = useContext(AdminContext);
+
 	return (
 		<div className='NavBar'>
 			<div className="logoHolder">
@@ -37,7 +41,7 @@ function NavBar() {
 
 			<div className="contactInfo">
 				<div className="info">
-					<Link to='/dashboard/orderList'>
+					<Link to={isAdmin ? '/dashboard/orderList' : '/dashboard/book'}>
 						<FontAwesomeIcon icon={faUser} />
 					</Link>
 				</div>

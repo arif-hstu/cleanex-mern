@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react'
 import { Link, useHistory, useLocation } from 'react-router-dom';
-import { UserContext } from '../../App'
+import { UserContext } from '../../App';
+import { AdminContext } from '../../App';
 import firebase from 'firebase';
 import 'firebase/auth';
 import firebaseConfig from './firebaseConfig'
@@ -10,6 +11,7 @@ import logo from '../../images/logoText.png';
 function Login() {
 	const [loggedIn, setLoggedIn] = useState(false);
 	const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+	const [isAdmin, setIsAdmin, admins, setAdmins] = useContext(AdminContext);
 
 	// firebase initialization and functionality
 	if (!firebase.apps.length) {
@@ -23,10 +25,11 @@ function Login() {
 		firebase.auth()
 			.signInWithPopup(provider)
 			.then((result) => {
+
 				/** @type {firebase.auth.OAuthCredential} */
 				var credential = result.credential;
 				// This gives you a Google Access To
-				 // ken. You can use it to access the Google API.
+				// ken. You can use it to access the Google API.
 				var token = credential.accessToken;
 				// The signed-in user info.
 				var user = result.user;
@@ -37,7 +40,14 @@ function Login() {
 				newUserInfo.email = user.email;
 				setLoggedInUser(newUserInfo);
 
-				history.replace(from);
+				const admin = admins.find(item => item.email === user.email);
+				if (admin !== undefined) {
+					setIsAdmin(true);
+					let { from } = { from: { pathname: "/dashboard/orderList" } };
+					history.replace(from);
+				} else {
+					history.replace(from);
+				}
 				// ...
 			}).catch((error) => {
 				// Handle Errors here.
@@ -71,7 +81,6 @@ function Login() {
 					</div>
 				</div>
 			}
-
 			{
 				loggedIn &&
 				<div className='Login'>
@@ -89,4 +98,4 @@ function Login() {
 	)
 }
 
-export default Login
+export default Login;
