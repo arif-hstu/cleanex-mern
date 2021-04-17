@@ -1,4 +1,4 @@
-.Review {
+.Review2 {
 	height: 100%;
 	background-color: white;
 	border-radius: 1rem;
@@ -15,46 +15,46 @@
 	margin-right: 2vw;
 }
 
-.Review h5 {
+.Review2 h5 {
 	margin-bottom: 5px;
 }
 
-.Review .part1 input, 
-.Review .part2 input, 
-.Review .part3 input {
+.Review2 .part1 input, 
+.Review2 .part2 input, 
+.Review2 .part3 input {
 	border: 1px solid #dedede;
 	height: 1.8rem;
 	border-radius: 0.4rem;
 }
 
 
-.Review .part1,
-.Review .part2,
-.Review .part3  {
+.Review2 .part1,
+.Review2 .part2,
+.Review2 .part3  {
 	height: auto;
 	display: flex;
 	flex-direction: column;
 }
 
-.Review .part1 {
+.Review2 .part1 {
 	grid-area: part1;
 }
 
-.Review .part2 {
+.Review2 .part2 {
 	grid-area: part2;
 }
 
-.Review .part3 {
+.Review2 .part3 {
 	grid-area: part3;
 }
 
-.Review .generalError {
+.Review2 .generalError {
 	grid-area: error;
 	height: 0.5rem;
 	justify-self: center;
 }
 
-.Review button {
+.Review2 button {
 	margin-top: 15%;
 	grid-area: button;
 	margin-bottom: 12%;
@@ -68,7 +68,7 @@
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (max-width: 768px) {
-	.Review {
+	.Review2 {
 		display: grid;
 		grid-template-columns: 1fr 1fr 1fr;
 		grid-gap: 5%;

@@ -5,9 +5,9 @@
 	height: calc(var(--topBarHeight) * 3);
 
 	display: grid;
-	grid-template-columns: 6rem 1fr 8rem;
-
+	grid-template-columns: 6rem 1fr 10rem;
 }
+
 .NavBar .logoHolder {
 	display: grid;
 	border-right: 1px solid var(--gray);
@@ -62,6 +62,11 @@
 .NavBar .contactInfo .info {
 	display: flex;
 	align-items: center;
+}
+
+.NavBar .contactInfo .info > * {
+	text-decoration: none;
+	font-weight: var(--bolder);
 }
 
 .NavBar .contactInfo .info > *:last-child {

@@ -10,9 +10,11 @@ import './NavBar.css';
 import logo from '../../../images/logoText.png';
 
 import { AdminContext } from '../../../App';
+import { UserContext } from '../../../App';
 
 function NavBar() {
 	const [isAdmin, setAdmin] = useContext(AdminContext);
+	const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 
 	return (
 		<div className='NavBar'>
@@ -42,6 +44,13 @@ function NavBar() {
 			<div className="contactInfo">
 				<div className="info">
 					<Link to={isAdmin ? '/dashboard/orderList' : '/dashboard/book'}>
+						{loggedInUser.displayName ? 
+							loggedInUser.displayName +' ' :
+							loggedInUser.email ?
+							loggedInUser.email + ' ' : 
+							'Login '
+						}
+
 						<FontAwesomeIcon icon={faUser} />
 					</Link>
 				</div>

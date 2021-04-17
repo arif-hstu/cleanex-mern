@@ -5,7 +5,6 @@ import './Services.css';
 
 import ladyCleaner1 from '../../../images/ladyCleaner1.png'
 
-
 function Services() {
 	return (
 		<div className='Services'>

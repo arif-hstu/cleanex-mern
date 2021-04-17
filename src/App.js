@@ -22,7 +22,7 @@ function App() {
   const [admins, setAdmins] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/admins')
+    fetch('http://cleanex.herokuapp.com/admins')
       .then(res => res.json())
       .then(data => setAdmins(data))
   }, [])

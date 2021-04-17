@@ -82,7 +82,7 @@ function Review() {
 	}
 
 	return (
-		<div className='Review'>
+		<div className='Review2'>
 			<div className="part1">
 				<h5>Your Name</h5>
 				<input onFocus={removeError} onBlur={handleInputText}  type="text" name="reviewerName" />
