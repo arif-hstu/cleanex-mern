@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import './AddService.css';
+import './Book.css';
 import axios from 'axios';
 require('dotenv').config();
 
 
-function AddService() {
+function Book() {
 	// handle INPUT PRODUCT to send to the database
 	const [inputService, setInputService] = useState({});
 	const [error, setError] = useState({});
@@ -143,7 +143,7 @@ function AddService() {
 	}
 
 	return (
-		<div className='AddService'>
+		<div className='Book'>
 			<div className="part1">
 				<h5>Service Name</h5>
 				<input onFocus={removeError} onBlur={handleInputText} id='Product' type="text" name="serviceName" />
@@ -201,4 +201,4 @@ function AddService() {
 	)
 }
 
-export default AddService;
+export default Book;

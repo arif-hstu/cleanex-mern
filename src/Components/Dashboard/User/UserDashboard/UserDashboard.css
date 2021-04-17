@@ -1,0 +1,20 @@
+.UserDashboard {
+	display: grid;
+	grid-template-rows: 3rem 2rem auto 2rem;
+	grid-template-columns: 2rem auto 2rem;
+	grid-template-areas: 
+	'AdminDashboardHeader AdminDashboardHeader AdminDashboardHeader'
+	'. . .'
+	'. AdminDashboardPanel .'
+	'. . .';
+
+
+}
+
+.UserDashboard > *:first-of-type{
+	grid-area: AdminDashboardHeader;
+}
+
+.UserDashboard > *:last-of-type {
+	grid-area: AdminDashboardPanel;
+}

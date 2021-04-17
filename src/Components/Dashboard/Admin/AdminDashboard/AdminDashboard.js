@@ -6,6 +6,7 @@ import DashboardHeader from '../../DashboardShared/DashboardHeader/DashboardHead
 import AddService from '../AddService/AddService';
 import OrderList from '../OrderList/OrderList';
 import ManageService from '../ManageService/ManageService';
+import MakeAdmin from '../MakeAdmin/MakeAdmin';
 
 function AdminDashboard() {
 	const { destination } = useParams();
@@ -21,6 +22,9 @@ function AdminDashboard() {
 			}
 			{
 				destination === 'manageService' && <ManageService />
+			}
+			{
+				destination === 'makeAdmin' && <MakeAdmin />
 			}
 		</div>
 	)

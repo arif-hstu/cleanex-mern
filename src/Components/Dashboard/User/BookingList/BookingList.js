@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Select from 'react-select';
-import './OrderList.css';
+import './BookingList.css';
 
 
-function OrderList() {
+function BookingList() {
 	// update list after deleting product 
 	const [deletedOrder, setDeletedOrder] = useState({
 		deletedId: ''
@@ -75,13 +75,9 @@ function OrderList() {
 	}
 
 
-	const settingStatus = (updateStatus) => {
-
-	}
-
 	return (
 		<>
-			<div className='OrderList'>
+			<div className='BookingList'>
 				<div className="headline">
 					<p>Name</p>
 					<p>Email</p>
@@ -111,4 +107,4 @@ function OrderList() {
 	)
 }
 
-export default OrderList;
+export default BookingList;

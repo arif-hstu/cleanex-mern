@@ -1,0 +1,62 @@
+.MakeAdmin {
+	height: 100%;
+	background-color: white;
+	border-radius: 1rem;
+	padding: 1.5rem;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+	grid-gap: 5%;
+	grid-template-areas: 
+	'part1 part1 part1 part1 part1 part1'
+	'error error error error error error'
+	'. . button button . .';
+
+	margin-right: 2vw;
+}
+
+
+.MakeAdmin .part1 input {
+	border: 1px solid #dedede;
+	height: 1.8rem;
+	border-radius: 0.4rem;
+}
+
+
+.MakeAdmin .part1 {
+	height: auto;
+	grid-area: part1;
+	display: flex;
+	flex-direction: column;
+}
+
+.MakeAdmin .generalError {
+	grid-area: error;
+	height: 0.5rem;
+	justify-self: center;
+}
+
+.MakeAdmin button {
+	margin-top: 15%;
+	grid-area: button;
+	margin-bottom: 12%;
+	border-style: none;
+	border-radius: 0.3rem;
+	color: white;
+	padding-bottom: 0.5rem;
+	padding-top: 0.5rem;
+
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (max-width: 768px) {
+	.MakeAdmin {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		grid-gap: 5%;
+		grid-template-areas: 
+		'part1 part1 part1' 
+		'error error error'
+		'. button .';
+	}
+}
+
