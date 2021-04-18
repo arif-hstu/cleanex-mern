@@ -5,6 +5,7 @@
 	box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
 	border-radius: 5px;
 	background-color: var(--white);
+	cursor: pointer;
 }
 
 .Service .textHolder {
@@ -40,7 +41,7 @@
 	align-self: center;
 	height: 1.5rem;
 	width: 1.5rem;
-	background-color: var(--secondary);
+	background-color: var(--primary);
 	padding: 1rem;
 	border-radius: 50%;
 
@@ -60,8 +61,36 @@
    -moz-border-radius: 4rem;
    -webkit-border-radius: 4rem;
    border-radius: 50%;
-   background-color: var(--primary);
+   background-color: var(--secondary);
    position: absolute;
    z-index: -20;
+}
+
+.Service .iconHolder .icon {
+    transition-property: transform;
+    transition-duration: 1s;
+}
+
+.Service .textHolder {
+	transition: transform 400ms ease;
+}
+
+.Service:hover .textHolder  {
+	transform: translateX(20px);
+}
+
+.Service:hover .icon  {
+	 animation-name: rotate; 
+    animation-duration: 500ms; 
+    animation-fill-mode: forwards;
+}
+
+@keyframes rotate {
+  0% {
+    transform: scale(0.7);
+  }
+  100% {
+    transform: scale(1.2);
+  }
 }
 

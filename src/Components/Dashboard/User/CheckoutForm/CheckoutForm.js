@@ -1,13 +1,17 @@
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import './CheckoutForm.css';
 
-const CheckoutForm = ({error, setError, inputInfo, sendToDatabase }) => {
+const CheckoutForm = ({fetchedService, error, setError, inputInfo, sendToDatabase }) => {
   const stripe = useStripe();
   const elements = useElements();
+
+    console.log(fetchedService);
+
 
   const handleSubmit = async (event) => {
     // Block native form submission.
     event.preventDefault();
+
 
     if (!stripe || !elements) {
       // Stripe.js has not loaded yet. Make sure to disable
@@ -47,7 +51,7 @@ const CheckoutForm = ({error, setError, inputInfo, sendToDatabase }) => {
     <form className='CardElement' onSubmit={handleSubmit}>
       <CardElement />
 
-      <button className="primaryBtn" type="submit" disabled={!stripe}>
+      <button className="primaryBtn" type="submit" disabled ={!stripe ||fetchedService.length===0}>
         Pay
       </button>
     </form>

@@ -1,4 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
+
+import { SelectedServiceContext } from '../../../../App';
+
 import './Book.css';
 import axios from 'axios';
 import { Elements } from '@stripe/react-stripe-js';
@@ -12,9 +15,23 @@ require('dotenv').config();
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_KEY);
 
 function Book() {
+	const [selectedService, setSelectedService] = useContext(SelectedServiceContext);
 	const [inputInfo, setInputInfo] = useState({});
 	const [error, setError] = useState({});
 	const [uploadMessage, setUploadMessage] = useState('');
+	const [fetchedService, setFetchedService] = useState([]);
+
+	useEffect(() => {
+		fetch('http://localhost:5000/seletedService', {
+			method: 'POST',
+			headers: {
+				'Content-type': 'application/json'
+			},
+			body: JSON.stringify(selectedService)
+		})
+			.then(res => res.json())
+			.then(data => setFetchedService(data));
+	}, [selectedService])
 
 	// process input text
 	const handleInputText = (e) => {
@@ -61,14 +78,15 @@ function Book() {
 	* to the server
 	*******/
 	const sendToDatabase = (e) => {
-		
+
 		// create random orderID
 		const randomIdGenerator = () => {
 			return Math.random().toString(36).substr(2, 7);
 		};
 		const newInputInfo = { ...inputInfo };
 		newInputInfo.orderID = randomIdGenerator();
-		setInputInfo(newInputInfo);
+		newInputInfo.
+			setInputInfo(newInputInfo);
 
 		if (
 			inputInfo.buyerName &&
@@ -101,6 +119,22 @@ function Book() {
 
 	return (
 		<div className='Book'>
+			<div className="serviceInfo">
+				<h4>
+					{
+						fetchedService.length === 0 ?
+							'No service selected' :
+							fetchedService[0].serviceName
+					}
+				</h4>
+				<h4>৳
+					{
+						fetchedService.length === 0 ?
+							' 0' :
+							fetchedService[0].serviceCharge
+					}
+				</h4>
+			</div>
 			<div className="part1">
 				<h5>Your Name</h5>
 				<input onFocus={removeError} onBlur={handleInputText} type="text" name="buyerName" />
@@ -126,13 +160,11 @@ function Book() {
 			<div className="stripe">
 				<Elements stripe={stripePromise}>
 					<CheckoutForm
-						uploadMessage={uploadMessage}
-						setUploadMessage={setUploadMessage}
 						setError={setError}
 						error={error}
-						uploadMessage={uploadMessage}
 						inputInfo={inputInfo}
 						sendToDatabase={sendToDatabase}
+						fetchedService={fetchedService}
 					/>
 				</Elements>
 			</div>

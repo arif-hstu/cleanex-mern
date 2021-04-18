@@ -1,6 +1,7 @@
 .Services {
 	margin-left: calc(var(--margin) + 2rem);
 	margin-right: var(--margin);
+	margin-top: 10%;
 
 	display: grid;
 	grid-template-columns: 0.8fr 1fr 0.8fr;
@@ -23,12 +24,10 @@
 	color: var(--white);
 	padding: 0.3rem;
 	border-radius: 0.8rem;
-}
-
-.Services .serviceFeature {
 	font-size: 9px;
 	margin: 0;
 }
+
 
 .Services .serviceFeature p{
 	font-size: var(--largeFont);
@@ -83,3 +82,18 @@
 	grid-template-rows: 1fr 1fr 1fr;
 	grid-gap: 0.5rem;
 } 
+
+.serviceCenter:hover .serviceFeature  {
+	 animation-name: rotate; 
+    animation-duration: 500ms; 
+    animation-fill-mode: forwards;
+}
+
+@keyframes rotate {
+  0% {
+    transform: scale(0.7);
+  }
+  100% {
+    transform: scale(1.2);
+  }
+}

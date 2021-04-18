@@ -15,11 +15,13 @@ import Dashboard from './Components/Dashboard/Dashboard/Dashboard';
 
 export const UserContext = createContext();
 export const AdminContext = createContext();
+export const SelectedServiceContext = createContext();
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({});
   const [isAdmin, setIsAdmin] = useState(false);
   const [admins, setAdmins] = useState([]);
+  const [selecteService, setSelectedService] = useState([]);
 
   useEffect(() => {
     fetch('http://cleanex.herokuapp.com/admins')
@@ -31,19 +33,21 @@ function App() {
     <div className="App">
       <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
         <AdminContext.Provider value={[isAdmin, setIsAdmin, admins, setAdmins]}>
-          <Router>
-            <Switch>
-              <Route exact path='/'>
-                <Home />
-              </Route>
-              <PrivateRoute exact path='/dashboard/:destination'>
-                <Dashboard />
-              </PrivateRoute>
-              <Route exact path='/login'>
-                <Login />
-              </Route>
-            </Switch>
-          </Router>
+          <SelectedServiceContext.Provider value={[selecteService, setSelectedService]}>
+            <Router>
+              <Switch>
+                <Route exact path='/'>
+                  <Home />
+                </Route>
+                <PrivateRoute exact path='/dashboard/:destination'>
+                  <Dashboard />
+                </PrivateRoute>
+                <Route exact path='/login'>
+                  <Login />
+                </Route>
+              </Switch>
+            </Router>
+          </SelectedServiceContext.Provider>
         </AdminContext.Provider>
       </UserContext.Provider>
     </div>
