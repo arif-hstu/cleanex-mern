@@ -12,10 +12,11 @@
   opacity: 0.2; 
   z-index: -1;
   background: url('../../../images/mainHeaderBg1.jpg');
+  filter: grayscale(100%);
 }
 
 .MainHeader .headerContent {
-	margin-top: 3.5rem;
+	margin-top: 6rem;
 	width: var(--centralWidth);
 	margin-left: var(--margin);
 	margin-right: var(--margin);
@@ -33,6 +34,13 @@
 .MainHeader .headerContent .secondaryBtn {
 	margin-left: 0.25rem;
 }
+
+/* Medium devices (landscape tablets, 950px and up) */
+@media only screen and (max-width: 950px) {
+  .MainHeader .headerContent {
+    margin-top: 8rem;
+  }
+} 
 
 
 

@@ -28,6 +28,23 @@
 
 .ManageService .actionHolder button {
 	border-style: none;
+	border: 1px solid red;
+	width: 3rem;
+	height: 1.5rem;
+	color: red;
+	cursor: pointer;
+	background-color: none;
+	border-radius: 5px;
+	padding: 0.2rem;
+}
+
+.ManageService .actionHolder button:hover {
+	background-color: red;
+	color: white;
+}
+
+.ManageService .actionHolder button:focus {
+	outline: none;
 }
 
 .ManageService > *:first-of-type{

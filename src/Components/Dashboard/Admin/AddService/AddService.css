@@ -50,7 +50,7 @@
 	margin-top: 15%;
 	grid-area: button;
 	margin-bottom: 12%;
-	background-color: #19103f;
+	background-color: var(--primary);
 	border-style: none;
 	border-radius: 0.3rem;
 	color: white;

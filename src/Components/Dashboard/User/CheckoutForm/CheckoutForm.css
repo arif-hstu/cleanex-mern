@@ -3,6 +3,7 @@
 	height: 1.5rem;
 	border-radius: 5px;
 	padding: 0.6rem 0.2rem 0rem 0.2rem;
+	margin-bottom: -2rem;
 }
 
 .CardElement button:disabled,

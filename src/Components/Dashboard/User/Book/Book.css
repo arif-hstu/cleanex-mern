@@ -9,7 +9,6 @@
 	grid-template-areas: 
 	'service service service service service service'
 	'part1 part1 part1 part2 part2 part2'
-	'part3 part3 part3 part3 part3 part3'
 	'part4 part4 part4 part4 part4 part4'
 	'error error error error error error'
 	'. . button button . .';
@@ -22,8 +21,7 @@
 }
 
 .Book .part1 input, 
-.Book .part2 input, 
-.Book .part3 input {
+.Book .part2 input{
 	border: 1px solid #dedede;
 	height: 1.8rem;
 	border-radius: 0.4rem;
@@ -31,8 +29,7 @@
 
 
 .Book .part1,
-.Book .part2,
-.Book .part3  {
+.Book .part2{
 	height: auto;
 	display: flex;
 	flex-direction: column;
@@ -40,6 +37,7 @@
 
 .Book .serviceInfo {
 	grid-area: service;
+	margin-bottom: -2rem;
 
 	display: flex;
 	justify-content: space-between;
@@ -57,10 +55,6 @@
 	grid-area: part2;
 }
 
-.Book .part3 {
-	grid-area: part3;
-}
-
 .Book .stripe {
 	grid-area: part4;
 }
@@ -72,7 +66,7 @@
 
 .Book .generalError {
 	color: red;
-	transform: translateY(-20px);
+	margin-top: -3.5rem;
 	grid-area: error;
 	height: 0.5rem;
 	justify-self: center;
@@ -100,7 +94,6 @@
 		'service service service'
 		'part1 part1 part1' 
 		'part2 part2 part2' 
-		'part3 part3 part3' 
 		'part4 part4 part4' 
 		'error error error'
 		'. button .';

@@ -1,18 +1,19 @@
 .AdminSideBar {
 	/*position: fixed;*/
-	background: linear-gradient(to right, #19103f, #19103f);
+	background:var(--dark);
 	display: grid;
 	grid-template-rows: 3rem auto;
 	grid-template-areas: 
 	'logo'
 	'menu';
-	height: 100vh;
-
+	height: 100vh;	
 }
 
 .AdminSideBar img {
 	grid-area: logo;
 	width: 40%;
+	margin-left: 2rem;
+	margin-top: 1rem;
 }
 
 .AdminSideBar .menu {

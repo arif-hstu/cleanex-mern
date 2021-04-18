@@ -1,12 +1,14 @@
 .DashboardHeader {
-	background-color: #19103f;
+	background-color: var(--dark);
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	padding-left: 2rem;
 	color: white;
+	position: fixed;
+	width: calc(100vw - 15rem);
 }
 
 .DashboardHeader > * {
-		margin-right: 3vw;
+		margin-right: 10vw;
 }

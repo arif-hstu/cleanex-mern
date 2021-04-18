@@ -15,8 +15,9 @@ function AdminSideBar() {
 	useEffect(() => {
 		if (destination === 'orderList') {
 			setListStyle({
-				backgroundColor: '#2f216a',
-				padding: '0.8rem 0 0.8rem 1rem'
+				backgroundColor: 'var(--secondary)',
+				padding: '0.8rem 0 0.8rem 1rem',
+				color: 'var(--primary)'
 			});
 			setAddStyle({});
 			setAdminStyle({});
@@ -24,8 +25,9 @@ function AdminSideBar() {
 		}
 		if (destination === 'addService') {
 			setAddStyle({
-				backgroundColor: '#2f216a',
-				padding: '0.8rem 0 0.8rem 1rem'
+				backgroundColor: 'var(--secondary)',
+				padding: '0.8rem 0 0.8rem 1rem',
+				color: 'var(--primary)'
 			});
 			setListStyle({});
 			setAdminStyle({});
@@ -33,8 +35,9 @@ function AdminSideBar() {
 		}
 		if (destination === 'manageService') {
 			setManageStyle({
-				backgroundColor: '#2f216a',
-				padding: '0.8rem 0 0.8rem 1rem'
+				backgroundColor: 'var(--secondary)',
+				padding: '0.8rem 0 0.8rem 1rem',
+				color: 'var(--primary)'
 			});
 			setListStyle({});
 			setAdminStyle({});
@@ -42,8 +45,9 @@ function AdminSideBar() {
 		} 
 		if (destination === 'makeAdmin') {
 			setAdminStyle({
-				backgroundColor: '#2f216a',
-				padding: '0.8rem 0 0.8rem 1rem'
+				backgroundColor: 'var(--secondary)',
+				padding: '0.8rem 0 0.8rem 1rem',
+				color: 'var(--primary)'
 			});
 			setListStyle({});
 			setAddStyle({});

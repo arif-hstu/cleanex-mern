@@ -2,8 +2,13 @@ import React from 'react';
 
 import './ExpertTeam.css';
 import Expert from '../Expert/Expert';
+import expert1 from '../../../images/expert1.png';
+import expert2 from '../../../images/expert2.png';
+import expert3 from '../../../images/expert3.png';
+import expert4 from '../../../images/expert4.png';
 
 function ExpertTeam() {
+	const imageArray = [expert1, expert2, expert3, expert4]
 	return (
 		<div className='ExpertTeam'>
 			<div className="header">
@@ -17,10 +22,9 @@ function ExpertTeam() {
 			</div>
 
 			<div className="contents">
-				<Expert />
-				<Expert />
-				<Expert />
-				<Expert />
+			{
+				imageArray.map((image, index) => <Expert image={image} key={index} />)
+			}
 			</div>
 		</div>
 	)

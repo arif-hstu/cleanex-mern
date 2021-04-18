@@ -30,8 +30,8 @@ function NavBar() {
 
 				<div className='menuLink'>
 					<Link to='/residentialService'>Home</Link>
-					<Link to='/Business Service'>Packages</Link>					<Link to='/residentialService'>Services</Link>
-					<Link to='/Business Service'>Features</Link>					<Link to='/residentialService'>News</Link>
+					<Link to='/Business Service'>Packages</Link>	
+					<Link to='/Business Service'>Features</Link>
 					<Link to='/Business Service'>News</Link>
 					<Link to='/residentialService'>Contacts</Link>
 
@@ -44,11 +44,11 @@ function NavBar() {
 			<div className="contactInfo">
 				<div className="info">
 					<Link to={isAdmin ? '/dashboard/orderList' : '/dashboard/book'}>
-						{loggedInUser.displayName ? 
-							loggedInUser.displayName +' ' :
+						{loggedInUser.displayName ?
+							loggedInUser.displayName + ' ' :
 							loggedInUser.email ?
-							loggedInUser.email + ' ' : 
-							'Login '
+								loggedInUser.email + ' ' :
+								'Login '
 						}
 
 						<FontAwesomeIcon icon={faUser} />

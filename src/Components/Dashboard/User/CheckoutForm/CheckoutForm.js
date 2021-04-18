@@ -1,17 +1,13 @@
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import './CheckoutForm.css';
 
-const CheckoutForm = ({fetchedService, error, setError, inputInfo, sendToDatabase }) => {
+const CheckoutForm = ({fetchedService, error, setError, inputInfo, sendToDatabase, loggedInUser, setLoggedInUser }) => {
   const stripe = useStripe();
   const elements = useElements();
-
-    console.log(fetchedService);
-
 
   const handleSubmit = async (event) => {
     // Block native form submission.
     event.preventDefault();
-
 
     if (!stripe || !elements) {
       // Stripe.js has not loaded yet. Make sure to disable
@@ -24,7 +20,7 @@ const CheckoutForm = ({fetchedService, error, setError, inputInfo, sendToDatabas
     // each type of element.
     const cardElement = elements.getElement(CardElement);
 
-    if (inputInfo.buyerName, inputInfo.buyerEmail, inputInfo.serviceName) {
+    if (loggedInUser.email, inputInfo.serviceName) {
       // Use your card Element with other Stripe.js APIs
       const { error, paymentMethod } = await stripe.createPaymentMethod({
         type: 'card',
@@ -44,7 +40,6 @@ const CheckoutForm = ({fetchedService, error, setError, inputInfo, sendToDatabas
         error: 'generalError'
       });
     }
-
   };
 
   return (

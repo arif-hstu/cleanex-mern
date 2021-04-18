@@ -14,24 +14,27 @@ function UserSideBar() {
 	useEffect(() => {
 		if (destination === 'review') {
 			setReviewStyle({
-				backgroundColor: '#2f216a',
-				padding: '0.8rem 0 0.8rem 1rem'
+				backgroundColor: 'var(--secondary)',
+				padding: '0.8rem 0 0.8rem 1rem',
+				color: 'var(--primary)'
 			});
 			setBookingStyle({});
 			setBookStyle({});
 		}
 		if (destination === 'book') {
 			setBookStyle({
-				backgroundColor: '#2f216a',
-				padding: '0.8rem 0 0.8rem 1rem'
+				backgroundColor: 'var(--secondary)',
+				padding: '0.8rem 0 0.8rem 1rem',
+				color: 'var(--primary)'
 			});
 			setReviewStyle({});
 			setBookingStyle({});
 		}
 		if (destination === 'bookingList') {
 			setBookingStyle({
-				backgroundColor: '#2f216a',
-				padding: '0.8rem 0 0.8rem 1rem'
+				backgroundColor: 'var(--secondary)',
+				padding: '0.8rem 0 0.8rem 1rem',
+				color: 'var(--primary)'
 			});
 			setReviewStyle({});
 			setBookStyle({});

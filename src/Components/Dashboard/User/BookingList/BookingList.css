@@ -12,7 +12,12 @@
 	padding: 0 1rem;
 	font-size: 0.8rem;
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-columns: 0.5fr 1fr 0.9fr 0.4fr 0.4fr;
+}
+
+.BookingList .listItems > *:last-child,
+.BookingList .headline > *:last-child {
+	margin-left: auto;
 }
 
 .BookingList .listItems img{

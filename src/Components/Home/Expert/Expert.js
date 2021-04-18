@@ -2,11 +2,10 @@ import React from 'react';
 
 import './Expert.css';
 
-import expert1 from '../../../images/expert1.png'
 
-function Expert() {
+function Expert({ image }) {
 	const bgImgStyle = {
-		background: 'url(' + expert1 + ')',
+		background: 'url(' + image + ')',
 		backgroundRepeat: 'no-repeat',
 		backgroundPosition: 'center center',
 		backgroundSize: 'cover',

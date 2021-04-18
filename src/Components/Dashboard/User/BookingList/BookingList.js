@@ -59,14 +59,16 @@ function BookingList() {
 			<div className='BookingList'>
 				<div className="headline">
 					<p>Order ID</p>
-					<p>Date</p>
+					<p>Service</p>
+					<p>Email</p>
 					<p>Status</p>
 					<p>Total</p>
 				</div>
 				{
 					allOrders.map(order => <> <div id={order._id} className='listItems'>
 						<p>{order.orderID}</p>
-						<p>{12 || order.orderDate}</p>
+						<p>{order.serviceName}</p>
+						<p>{order.buyerEmail}</p>
 						<p>{order.status}</p>
 						<p>{order.totalCost}</p>
 					</div>

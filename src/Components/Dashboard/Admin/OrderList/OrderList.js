@@ -58,7 +58,7 @@ function OrderList() {
 
 	// handleStatusChange 
 	const handleStatusChange = (e, updateStatus, orderID) => {
-		fetch('http://localhost:5000/updateOrder', {
+		fetch('https://cleanex.herokuapp.com/updateOrder', {
 			method: 'POST',
 			body: JSON.stringify({
 				orderID,
@@ -71,9 +71,7 @@ function OrderList() {
 			.then(data => {
 				setStatus(e.value);
 			})
-
 	}
-
 
 	const settingStatus = (updateStatus) => {
 
@@ -85,16 +83,16 @@ function OrderList() {
 				<div className="headline">
 					<p>Name</p>
 					<p>Email</p>
-					<p>order</p>
-					<p>Pay With</p>
+					<p>Service Name</p>
+					<p>Total Cost</p>
 					<p>Status</p>
 				</div>
 				{
-					allOrders.map(order => <> <div id={order._id} className='listItems'>
+					allOrders.map((order) => <> <div key={order._id} className='listItems'>
 						<p>{order.buyerName}</p>
 						<p>{order.buyerEmail}</p>
-						<p>{order.ServiceName}</p>
-						<p>{order.status}</p>
+						<p>{order.serviceName}</p>
+						<p>{order.totalCost}</p>
 						<div className='actionHolder'>
 							<Select defaultValue={
 								order.status === 'onGoing' ?

@@ -55,7 +55,7 @@ function MakeAdmin() {
 		if (inputEmail.email) {
 
 			// send product to the database
-			fetch('http://localhost:5000/makeAdmin', {
+			fetch('https://cleanex.herokuapp.com/makeAdmin', {
 				method: 'POST',
 				headers: {
 					'Content-type': 'application/json'

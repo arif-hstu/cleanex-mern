@@ -48,10 +48,10 @@ function Footer() {
 							<FontAwesomeIcon icon={faMapMarker} /> <p>Suihari, Dinajpur Sadar, Dinajpur,Dinajpur</p><br />
 						</div>
 						<div>
-							<FontAwesomeIcon icon={faPhone} /> <p>Suihari, Dinajpur Sadar, Dinajpur,Dinajpur</p><br />
+							<FontAwesomeIcon icon={faPhone} /> <p>(+880)-1700-000-000</p><br />
 						</div>
 						<div>
-							<FontAwesomeIcon icon={faEnvelope} /> <p>Suihari, Dinajpur Sadar, Dinajpur,Dinajpur</p><br />
+							<FontAwesomeIcon icon={faEnvelope} /> <p>support@cleanex.com</p><br />
 						</div>
 					</div>
 				</div>

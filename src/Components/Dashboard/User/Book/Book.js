@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 
 import { SelectedServiceContext } from '../../../../App';
+import { UserContext } from '../../../../App';
 
 import './Book.css';
 import axios from 'axios';
@@ -11,18 +12,19 @@ import CheckoutForm from '../CheckoutForm/CheckoutForm';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 require('dotenv').config();
 
-
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_KEY);
 
 function Book() {
 	const [selectedService, setSelectedService] = useContext(SelectedServiceContext);
+	const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+
 	const [inputInfo, setInputInfo] = useState({});
 	const [error, setError] = useState({});
 	const [uploadMessage, setUploadMessage] = useState('');
 	const [fetchedService, setFetchedService] = useState([]);
 
 	useEffect(() => {
-		fetch('http://localhost:5000/seletedService', {
+		fetch('https://cleanex.herokuapp.com/seletedService', {
 			method: 'POST',
 			headers: {
 				'Content-type': 'application/json'
@@ -40,18 +42,18 @@ function Book() {
 
 		const stringRegex = /[a-zA-Z]/;
 		valid = stringRegex.test(e.target.value);
-		console.log(valid);
 
-		if (valid) {
-			const newReview = { ...inputInfo };
-			newReview[e.target.name] = e.target.value;
-			setInputInfo(newReview);
+		if (valid && fetchedService[0].serviceName) {
+			const newInputInfo = { ...inputInfo };
+			newInputInfo[e.target.name] = e.target.value;
+			newInputInfo.serviceName = fetchedService[0].serviceName;
+			setInputInfo(newInputInfo);
 			valid = false;
 
 		} else {
-			const newReview = { ...inputInfo };
-			delete newReview[e.target.name];
-			setInputInfo(newReview);
+			const newInputInfo = { ...inputInfo };
+			delete newInputInfo[e.target.name];
+			setInputInfo(newInputInfo);
 
 			setError({
 				error: e.target.name
@@ -78,24 +80,24 @@ function Book() {
 	* to the server
 	*******/
 	const sendToDatabase = (e) => {
-
 		// create random orderID
 		const randomIdGenerator = () => {
 			return Math.random().toString(36).substr(2, 7);
 		};
 		const newInputInfo = { ...inputInfo };
 		newInputInfo.orderID = randomIdGenerator();
-		newInputInfo.
-			setInputInfo(newInputInfo);
+		newInputInfo.totalCost = fetchedService[0].serviceCharge;
+		newInputInfo.buyerEmail = loggedInUser.email;
+		newInputInfo.status = 'pending';
+		setInputInfo(newInputInfo);
 
 		if (
 			inputInfo.buyerName &&
-			inputInfo.buyerEmail &&
 			inputInfo.serviceName &&
 			inputInfo.orderID
 		) {
 			// send product to the database
-			fetch('http://localhost:5000/book', {
+			fetch('https://cleanex.herokuapp.com/book', {
 				method: 'POST',
 				headers: {
 					'Content-type': 'application/json'
@@ -144,16 +146,9 @@ function Book() {
 			</div>
 			<div className="part2">
 				<h5>Email</h5>
-				<input onFocus={removeError} onBlur={handleInputText} type="text" name="buyerEmail" />
+				<input onFocus={removeError} type="text" name="buyerEmail" value={loggedInUser.email || ' '} />
 				{
 					error.error === 'buyerEmail' && <p style={{ color: '#fa4e92' }}>Please input valid email</p>
-				}
-			</div>
-			<div className="part3">
-				<h5>Details</h5>
-				<input onFocus={removeError} onBlur={handleInputText} type="text" name="serviceName" />
-				{
-					error.error === 'serviceName' && <p style={{ color: '#fa4e92' }}>Please input valid details</p>
 				}
 			</div>
 
@@ -165,6 +160,8 @@ function Book() {
 						inputInfo={inputInfo}
 						sendToDatabase={sendToDatabase}
 						fetchedService={fetchedService}
+						loggedInUser={loggedInUser}
+						setLoggedInUser={setLoggedInUser}
 					/>
 				</Elements>
 			</div>

@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import './ManageService.css';
-// import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline'
-// import BorderColorIcon from '@material-ui/icons/BorderColor';;
-
 
 function ManageService() {
 	// update list after deleting product 
@@ -21,14 +18,10 @@ function ManageService() {
 
 
 	// handle deleteService funtionality
-	const deleteService = (e) => {
-		if (e.target.parentNode.id || e.target.id) {
-
+	const deleteService = (id) => {
 			fetch('https://cleanex.herokuapp.com/deleteService', {
 				method: 'POST',
-				body: JSON.stringify({
-					deletedId: e.target.parentNode.id || e.target.id
-				}),
+				body: JSON.stringify([id]),
 				headers: {
 					'Content-type': 'application/json'
 				}
@@ -36,16 +29,9 @@ function ManageService() {
 			.then(res => {
 				res.json();
 				setDeletedService({
-					deletedId: e.target.parentNode.id || e.target.id
+					deletedId: id
 				})
 			})
-			.then(data => {
-				//....
-			})
-			.catch(error => {
-				//....
-			})
-		}
 	}
 
 	return (
@@ -59,16 +45,16 @@ function ManageService() {
 					<p>Action</p>
 				</div>
 				{
-					allServices.map(service => <>
-						<div id={service._id} className='listItems'>
+					allServices.map((service, index) => <>
+						<div key={index} className='listItems'>
 							<p>{service.serviceName}</p>
 							<p>{service.serviceCharge}</p>
 							<p>Catagory</p>
 							<p><img src={service.serviceIcon} alt="Product" /></p>
 							<div className='actionHolder'>
 								
-								<button id={service._id} className="deleteIcon" onClick={deleteService}>
-									delete
+								<button className="deleteIcon" onClick={()=>deleteService(service._id)}>
+									Delete
 								</button>
 							</div>
 						</div>

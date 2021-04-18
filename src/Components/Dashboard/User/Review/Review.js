@@ -14,7 +14,6 @@ function Review() {
 
 		const stringRegex = /[a-zA-Z]/;
 		valid = stringRegex.test(e.target.value);
-		console.log(valid);
 
 		if (valid) {
 			const newReview = { ...inputReview };
@@ -59,7 +58,7 @@ function Review() {
 			inputReview.review 
 			) {
 			// send product to the database
-			fetch('http://localhost:5000/addReview', {
+			fetch('https://cleanex.herokuapp.com/addReview', {
 				method: 'POST',
 				headers: {
 					'Content-type': 'application/json'
@@ -69,7 +68,7 @@ function Review() {
 				.then(res => res.json())
 				.then(data => {
 					if (data.insertedCount) {
-						setUploadMessage('Admin created successfully!')
+						setUploadMessage('Review added successfully!')
 					} else {
 						setUploadMessage('Oops.. There was an error, please try again.')
 					}

@@ -31,11 +31,3 @@ function AdminDashboard() {
 }
 
 export default AdminDashboard;
-/*
-			{
-				adminDestination === 'addProduct' && <AddProduct />
-			}
-			{
-				adminDestination === 'productList' && <ProductList />
-			}
-*/

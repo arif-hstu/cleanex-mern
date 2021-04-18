@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import ReviewCard from '../ReviewCard/ReviewCard';
 
 import './Review.css';
 
 function Review() {
+	const [reviews, setReviews] = useState([]);
+	useEffect(() => {
+		fetch('https://cleanex.herokuapp.com/reviews?count=3')
+			.then(res => res.json())
+			.then(data => setReviews(data));
+	}, [])
+
 	return (
 		<div className='Review'>
 			<div className="header">
@@ -18,9 +25,9 @@ function Review() {
 			</div>
 
 			<div className="cardHolder">
-				<ReviewCard />
-				<ReviewCard />
-				<ReviewCard />
+			{
+				reviews.map((rv, index) => <ReviewCard key={index} review={rv}/>)
+			}
 			</div>
 		</div>
 	)

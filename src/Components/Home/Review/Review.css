@@ -58,3 +58,42 @@
 .Review .cardHolder > *:nth-child(2) {
 	margin: auto;
 }
+
+/* Medium devices (landscape tablets, 1125px and up) */
+@media only screen and (max-width: 1125px) {
+	.Review .cardHolder {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		grid-gap: 1rem;
+	}
+
+	.Review .cardHolder > *:nth-child(2) {
+		margin-right: 0;
+		margin-bottom: 0;
+	}
+
+	.Review .cardHolder > *:last-child {
+		display: none;
+	}
+
+}
+
+/* Medium devices (landscape tablets, 650px and up) */
+@media only screen and (max-width: 650px) {
+	.Review .cardHolder {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.Review .cardHolder > *:first-child {
+		margin: auto;
+	}
+
+	.Review .cardHolder > *:nth-child(2) {
+		margin: auto;
+	}
+
+
+}

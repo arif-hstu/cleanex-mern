@@ -2,11 +2,11 @@ import React from 'react';
 
 import './ReviewCard.css';
 
-import reviewer1 from '../../../images/reviewer1.jpg';
+import fakeProfile from '../../../images/fakeProfile.png';
 
-function ReviewCard() {
+function ReviewCard({review}) {
 	const reviewerImageStyle = {
-		background: `url(${reviewer1})`,
+		background: `url(${review.reviewerImg || fakeProfile})`,
 		backgroundRepeat: 'no-repeat',
 		backgroundSize: 'cover',
 		backgroundPosition: 'center center',
@@ -16,7 +16,7 @@ function ReviewCard() {
 return (
 	<div className='ReviewCard'>
 		<div className="review">
-			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit corporis incidunt dolorum</p>
+			<p>{review.review}</p>
 		</div>
 		<div className="reviewer">
 			<div style={reviewerImageStyle} className="image">
@@ -24,8 +24,8 @@ return (
 			</div>
 
 			<div className="designation">
-				<p>Farhan Rioq</p>
-				<p>Agent Manager</p>
+				<p>{review.reviewerName}</p>
+				<p>{review.designation}</p>
 			</div>
 		</div>
 	</div>

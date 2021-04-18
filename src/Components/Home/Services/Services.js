@@ -10,7 +10,7 @@ function Services() {
 	const [SecondServiceList, setSecondServiceList] = useState([]);
 
 	useEffect(() => {
-		fetch('http://localhost:5000/services?count=6')
+		fetch('https://cleanex.herokuapp.com/services?count=6')
 			.then(res => res.json())
 			.then(data => {
 				const firstList = data.slice(0, 3);
@@ -44,7 +44,7 @@ function Services() {
 
 			<div className="serviceList2">
 				{
-					SecondServiceList.map(serv => <Service serv={serv} />)
+					SecondServiceList.map((serv, index) => <Service serv={serv} key={index} />)
 				}
 			</div>
 		</div>

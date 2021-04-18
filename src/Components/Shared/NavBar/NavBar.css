@@ -6,9 +6,17 @@
 
 	display: grid;
 	grid-template-columns: 6rem 1fr 10rem;
+	grid-template-areas: 
+	'logoHolder linkHolder contactInfo';
+	box-shadow: 1px 1px 10px rgba(0,0,0, 0.3);
+
+	position: fixed;
+	left: var(--margin);
+	z-index: 9999;
 }
 
 .NavBar .logoHolder {
+	grid-area: logoHolder;
 	display: grid;
 	border-right: 1px solid var(--gray);
 }
@@ -20,6 +28,7 @@
 }
 
 .NavBar .linkHolder {
+	grid-area: linkHolder;
 	padding: 0 1rem;
 	display: grid;
 	grid-template-rows: var(--topBarHeight) calc(var(--topBarHeight) * 2)
@@ -54,6 +63,7 @@
 }
 
 .NavBar .contactInfo {
+	grid-area: contactInfo;
 	border-left: 1px solid var(--gray);
 	display: grid;
 	grid-template-rows: calc(var(--topBarHeight)) calc(var(--topBarHeight) * 2); 
@@ -104,3 +114,35 @@
 	font-weight: bold;
 	margin-top: 3px;
 }
+
+/* Medium devices (landscape tablets, 950px and up) */
+@media only screen and (max-width: 950px) {
+	.NavBar {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+		grid-template-areas: 
+		'logoHolder logoHolder linkHolder linkHolder linkHolder linkHolder'
+		'. . contactInfo contactInfo . .';
+	}
+
+	.NavBar .contactInfo {
+		border-left: none;
+		background-color: var(--secondary);
+		border-radius: 10px;
+		box-shadow: 1px 1px 10px rgba(0,0,0, 0.3);
+	}
+
+	.NavBar .contactInfo .contact{
+		border-radius: 10px
+	}
+	.NavBar .contactInfo .info{
+		margin: auto;
+	}
+	.NavBar .linkHolder .menuLink > *:nth-child(5) {
+		display: none;
+	}
+
+}
+
+
+

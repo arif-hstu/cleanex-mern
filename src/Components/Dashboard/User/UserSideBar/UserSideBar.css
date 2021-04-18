@@ -1,6 +1,6 @@
 .UserSideBar {
 	/*position: fixed;*/
-	background: linear-gradient(to right, #19103f, #19103f);
+	background-color: var(--dark);
 	display: grid;
 	grid-template-rows: 3rem auto;
 	grid-template-areas: 
@@ -13,6 +13,8 @@
 .UserSideBar img {
 	grid-area: logo;
 	width: 40%;
+	margin-left: 2rem;
+	margin-top: 1rem;
 }
 
 .UserSideBar .menu {
