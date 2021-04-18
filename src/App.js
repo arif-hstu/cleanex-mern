@@ -24,7 +24,7 @@ function App() {
   const [selecteService, setSelectedService] = useState([]);
 
   useEffect(() => {
-    fetch('http://cleanex.herokuapp.com/admins')
+    fetch('https://cleanex.herokuapp.com/admins')
       .then(res => res.json())
       .then(data => setAdmins(data))
   }, [])
