@@ -1,6 +1,6 @@
 ## Cleanex | Urban Cleaning Service
 
-An pen source web app created based on MERN STACK.
+An open source web app created based on MERN STACK.
 
 ## Live app:
 https://cleanex-f060a.firebaseapp.com
