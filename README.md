@@ -11,7 +11,7 @@ On the browser, the main technologies used are: React.js, React-select.
 On the server, the main technologies used are: Node.js, Express.js, MongoDB database.
 
 In addition to the above technologies, integration of the web application with the following external API services has been done:
-- Google OAuth API
+- Firebase Authentication
 - Github API
 - Stripe API
 - Fireabase API
